@@ -19,15 +19,15 @@ const Contact = () => {
 
   useEffect(() => {
     const getOwner = async () => {
-      const docRef = doc(db, 'users', params.owner)
+      const docRef = doc(db, 'users', params.ownerId)
       const docSnap = await getDoc(docRef)
 
-      docSnap.exists()
-        ? await setOwner(docSnap.data())
-        : toast.error('Could not find owner');
+      if (docSnap.exists()) {
+        setOwner(docSnap.data())
+      } else { toast.error('account deleted') }
     }
     getOwner()
-  }, [params.owner])
+  }, [params.ownerId])
 
   const onChange = (e) => {
     setMessage(e.target.value)
@@ -38,21 +38,10 @@ const Contact = () => {
     navigate('/')
   }
 
-  if (owner === null) {
-
-    return (
-      <Container>
-        <ContactTitle>
-          could not find owner
-        </ContactTitle>
-      </Container>
-    )
-
-  } else {
-
-    return (
-      <Container>
-        <ContactDiv>
+  return (
+   owner !== null &&
+    <Container>
+      <ContactDiv>
         <form onSubmit={onSubmit}>
           <Textarea
             cols="29"
@@ -63,19 +52,20 @@ const Contact = () => {
             value={message}
             onChange={onChange}
             maxLength='300'
-            placeholder={`send ${owner?.name} a message`}
+            placeholder={`send ${owner && owner.name} a message`}
           />
           <Buttons>
-            <Button href={`mailto:${owner.email}?Subject=${searchParams.get('listingName')}&body=${message}`}>
+            <Button href={`mailto:${owner && owner.email}
+                          ?Subject=${searchParams.get('listingName')}
+                          &body=${message}`}>
               send
             </Button>
           </Buttons>
         </form>
-        </ContactDiv>
-      </Container>
+      </ContactDiv>
+    </Container>
 
-    )
-  }
+  )
 }
 
 

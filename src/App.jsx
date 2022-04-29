@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <Toaster
-        position="top-center"
+        position="bottom-center"
         reverseOrder={false}
       />
       <Navbar />
@@ -41,7 +41,7 @@ function App() {
           <Route path='/signup' element={<Signup />} />
           <Route path='/category/:categoryName' element={<Category />} />
           <Route path='/forgotpassword' element={<ForgotPassword />} />
-          <Route path='/contact/:owner/' element={<Contact />} />
+          <Route path='/contact/:ownerId' element={<Contact />} />
         </Routes>
       </Content>
       <Footer />

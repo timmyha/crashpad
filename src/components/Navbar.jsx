@@ -42,7 +42,8 @@ const Container = styled.div`
 const TitleDiv = styled.div`
   display: flex;
   position: fixed;
-  margin: 0px;
+  margin-top: 0px;
+  -webkit-margin-before: -50px;
   height: 100px;
   background-color: #E882B2;
   color: #181314;
@@ -56,11 +57,10 @@ const TitleDiv = styled.div`
 
   const CollapseTitle = styled.div`
   position: fixed;
-  display: flex;
-  margin: 0px;
+  margin-top: 0px;
   height: 20px;
-  margin-bottom: 80px;
   background-color: #E882B2;
+  -webkit-margin-before: -50px;
   color: #181314;
   width: 100%;
   cursor: pointer;
