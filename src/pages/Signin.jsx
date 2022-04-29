@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import OAuth from '../components/OAuth';
+import toast from 'react-hot-toast';
 
 
 const Signin = () => {
@@ -36,10 +37,12 @@ const Signin = () => {
 
         if(user) {
           navigate('/')
+          toast.success('successfully logged in.')
         }
       })
       .catch((error) => {
         console.log(error.code, error.message)
+        toast.error('password must exceed six characters')
   });
   }
 

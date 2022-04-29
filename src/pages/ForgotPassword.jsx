@@ -2,6 +2,7 @@ import { useState} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, sendPasswordResetEmail } from 'firebase/auth'
 import styled from 'styled-components'
+import toast from 'react-hot-toast'
 
 const ForgotPassword = () => {
 
@@ -16,9 +17,10 @@ const ForgotPassword = () => {
     try {
       const auth = getAuth();
       await sendPasswordResetEmail(auth, email)
-      // TOAST EMAIL SENT //
+      toast.success('password recovery e-mail sent.')
     } catch (e) {
       console.log(e)
+      toast.error('not found')
     }
   }
 

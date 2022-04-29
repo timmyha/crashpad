@@ -78,6 +78,7 @@ const CreateListing = () => {
           },
           (error) => {
             reject(error)
+            toast.error('something went wrong')
           },
           () => {
             getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
@@ -254,7 +255,7 @@ const CreateListing = () => {
             required
           /><br />
 
-          <SubmitButton onClick={onSubmit} type="submit">create listing</SubmitButton>
+          <SubmitButton type="submit">create listing</SubmitButton>
 
         </form>
       </FormItem>
@@ -330,7 +331,7 @@ const Button = styled.button`
     width: 300px;
   }`
 
-const SubmitButton = styled.div`
+const SubmitButton = styled.button`
 text-align: center;
 border: none;
 padding: 10px;

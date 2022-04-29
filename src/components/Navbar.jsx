@@ -43,24 +43,22 @@ const TitleDiv = styled.div`
   display: flex;
   position: fixed;
   margin-top: 0px;
-  -webkit-margin-before: -50px;
   height: 100px;
   background-color: #E882B2;
   color: #181314;
   width: 100%;
   cursor: pointer;
-  transition: .1s;
   z-index: 100000;
   &:hover {
     color: #F1E0AD;
   }`
 
   const CollapseTitle = styled.div`
+  display: flex;
   position: fixed;
   margin-top: 0px;
   height: 20px;
   background-color: #E882B2;
-  -webkit-margin-before: -50px;
   color: #181314;
   width: 100%;
   cursor: pointer;

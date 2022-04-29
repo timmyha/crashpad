@@ -23,8 +23,23 @@ function App() {
   return (
     <>
       <Toaster
-        position="bottom-center"
+        position="bottom-right"
         reverseOrder={false}
+        toastOptions={{
+          style: {
+            marginBottom: '130px'
+          },
+          error: {
+          style: {
+            color: 'black',
+            backgroundColor: '#e882b2'
+          }},
+          success: {
+          style: {
+            color: 'black',
+            backgroundColor: '#85ffe5'
+        }}
+      }}
       />
       <Navbar />
       <Content>
@@ -51,7 +66,7 @@ function App() {
 
 const Content = styled.div`
   display: flex;
-  margin-top: 50px;
+  margin-top: 0px;
   `
 
 export default App

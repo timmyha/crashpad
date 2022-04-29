@@ -35,6 +35,7 @@ const Contact = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    toast.success('contact initiated.')
     navigate('/')
   }
 

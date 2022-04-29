@@ -6,10 +6,10 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase
 import { db } from '../firebase.config';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import OAuth from '../components/OAuth';
+import toast from 'react-hot-toast';
 
 const Signup = () => {
 
-  const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -27,10 +27,6 @@ const Signup = () => {
       [id]: value
     }))
 
-  }
-
-  const showPass = () => {
-    setShowPassword(!showPassword)
   }
 
   const onSubmit = async (e) => {
@@ -51,10 +47,14 @@ const Signup = () => {
       setDoc(doc(db, 'users', user.uid), formDataCopy)
 
       navigate('/')
+      toast.success('registration complete.')
       })
       .catch((error) => {
-      console.log(error.code, error.message)
-   
+        if (formData.password.length < 6) {
+          toast.error('password must exceed six characters.')
+        } else {
+        toast.error('registration failed.')
+        }
       });
       }
 

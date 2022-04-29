@@ -79,7 +79,7 @@ const Container = styled.div`
 const MainSplash = styled.div`
   display: flex;
   width: 100%;
-  height: 85vh;
+  height: 90vh;
   background-color: white;`
 
 const DiscoverSplash = styled.div`

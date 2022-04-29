@@ -8,6 +8,7 @@ import {
 } from 'firebase/firestore'
 import { db } from '../firebase.config'
 import Listing from './Listing'
+import toast from 'react-hot-toast'
 
 function Profile() {
 
@@ -50,13 +51,12 @@ function Profile() {
 
   const handleLogout = () => {
     auth.signOut()
+    toast.success('successfully logged out.')
     navigate('/')
   }
 
   const handleEdit = async () => {
     const userRef = doc(db, 'users', auth.currentUser.uid);
-
-    console.log(auth.currentUser.uid)
 
     try {
       if (auth.currentUser.displayName !== name) {
@@ -70,7 +70,9 @@ function Profile() {
       }
     } catch (e) {
       console.log(e.message)
+      toast.error('could not edit display name.')
     }
+    toast.success('successfully edited display name.')
   }
 
   const handleEditChange = (e) => {
@@ -81,8 +83,6 @@ function Profile() {
       }
     )))
   }
-
-  console.log(listings)
 
   const listingDisplay = listings && listings.map(listing => {
       return (
