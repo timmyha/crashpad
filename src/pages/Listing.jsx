@@ -131,8 +131,10 @@ const MapDiv = styled.div`
 const PageTitle = styled.h1`
   display: flex;
   margin: auto;
+  text-align: center;
   margin-top: 0px;
   margin-bottom: 0px;
+  padding: 10px;
   font-size: 40px;
   text-decoration: underline 5px #9491ec;
   `
@@ -197,7 +199,7 @@ const BlurbDiv = styled.div`
   margin-bottom: 20px;
   font-size: 23px;
   height: 130px;
-  width: 375px;`
+  width: 300px;`
 
 const Renter = styled.h3`
   display: flex;
@@ -215,7 +217,7 @@ const LeftQuote = styled.span`
 
 const RightQuote = styled.span`
   position: absolute;
-  margin-left: 330px;
+  margin-left: 270px;
   margin-top: 130px;
   font-size: 40px;`
 
@@ -240,8 +242,7 @@ const Contact = styled.div`
     &:hover {
     opacity: .7;
     }
-  margin-bottom: 200px;
-    @media (max-width: 400px) {
+    @media (max-width: 500px) {
       width: 300px;
     }`
 
