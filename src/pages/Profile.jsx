@@ -1,9 +1,13 @@
 import { getAuth, updateProfile } from 'firebase/auth'
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useNavigate, Link } from 'react-router-dom'
-import { updateDoc } from 'firebase/firestore'
+import {
+  updateDoc, doc, collection, getDocs,
+  query, where, orderBy, deleteDoc
+} from 'firebase/firestore'
 import { db } from '../firebase.config'
+import Listing from './Listing'
 
 function Profile() {
 
@@ -11,33 +15,119 @@ function Profile() {
   const user = auth.currentUser;
 
   const [updateUser, setUpdateUser] = useState(false)
+  const [listings, setListings] = useState(null)
   const [formData, setFormData] = useState({
     name: user.displayName,
     email: user.email
   })
 
   const { name, email } = formData
-
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const getUserListings= async () => {
+      const listingsRef = collection(db, 'listings');
+      const q = query(listingsRef,
+        where('userRef', '==', auth.currentUser.uid),
+        orderBy('timestamp', 'desc'))
+
+      const querySnap = await getDocs(q);
+      const listings = [];
+
+      querySnap.forEach(doc => {
+        return listings.push({
+          id: doc.id,
+          data: doc.data()
+        })
+      })
+
+      setListings(listings)
+    }
+
+
+    getUserListings();
+  }, [auth.currentUser.uid])
+
   const handleLogout = () => {
     auth.signOut()
     navigate('/')
   }
 
+  const handleEdit = async () => {
+    const userRef = doc(db, 'users', auth.currentUser.uid);
+
+    console.log(auth.currentUser.uid)
+
+    try {
+      if (auth.currentUser.displayName !== name) {
+        await updateProfile(auth.currentUser, {
+          displayName: name
+        })
+
+        await updateDoc(userRef, {
+          name
+        })
+      }
+    } catch (e) {
+      console.log(e.message)
+    }
+  }
+
+  const handleEditChange = (e) => {
+    setFormData((prev => (
+      {
+        ...prev,
+        [e.target.id]: e.target.value
+      }
+    )))
+  }
+
+  console.log(listings)
+
+  const listingDisplay = listings && listings.map(listing => {
+      return (
+      <Link key={listing.id} to={`/category/${listing.data.type}/${listing.id}`}>
+      <ListingDisplay>{listing.data.name}</ListingDisplay>
+      </Link>
+      )
+  })
 
   return (
     <Container>
-      <Subtitle>{name}</Subtitle>
+      {updateUser
+        ? <EditNameDisplay
+          value={name}
+          id='name'
+          type='text'
+          onChange={handleEditChange}
+        />
+        : <NameDisplay>{name}</NameDisplay>
+      }
       <SplashText>{email}</SplashText>
       <Buttons>
-      <Edit>
-        edit
-      </Edit>
-      <Logout
-        className="logOut"
-        onClick={handleLogout}
-      >logout</Logout>
+        <Edit onClick={() => {
+          updateUser && handleEdit();
+          setUpdateUser(!updateUser)
+        }}
+          style={updateUser ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "#e882b2" }}>
+          {updateUser ? 'done?' : 'edit?'}
+        </Edit>
+        <Logout
+          className="logOut"
+          onClick={handleLogout}
+        >logout</Logout>
       </Buttons>
+      { listings && 
+      <>
+      <NameDisplay>
+        your listings:
+      </NameDisplay>
+      <ListingDiv>
+      {listingDisplay}
+      </ListingDiv>
+      </>
+
+      }
     </Container>
   )
 }
@@ -63,13 +153,28 @@ const SplashText = styled.h4`
   }
 `
 
-const Subtitle = styled.span`
+const NameDisplay = styled.span`
   display: flex;
   padding-left: 10px;
   font-family: Rubik;
   font-size: 2rem;
   margin: auto;
+  margin-top: 20px;
   text-decoration: underline 5px #91D6ED;`
+
+const EditNameDisplay = styled.input`
+  display: flex;
+  padding-left: 10px;
+  font-family: Rubik;
+  font-size: 2rem;
+  text-align: center;
+  border: none;
+  background-color: lightgray;
+  margin: auto;
+  text-decoration: underline 5px #91D6ED;
+    &:focus {
+      outline: none;
+    }`
 
 const Buttons = styled.div`
   display: flex;
@@ -77,13 +182,13 @@ const Buttons = styled.div`
   `
 
 const Logout = styled.button`
-  display: flex;
   margin: auto;
   border: none;
   width: 100px;
   margin-top: 10px;
   margin-left: 20px;
-  padding: 10px 10px 10px 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-radius: 20px 20px 20px 20px;
   cursor: pointer;
   background-color: #9491EC;
@@ -93,18 +198,40 @@ const Logout = styled.button`
     }`
 
 const Edit = styled.button`
-  display: flex;
   border: none;
   margin: auto;
   width: 100px;
   margin-top: 10px;
   margin-right: 20px;
-  padding: 10px 10px 10px 35px;
+  padding: 10px 0px 10px 0px;
   border-radius: 20px 20px 20px 20px;
   cursor: pointer;
-  background-color: #e882b2;
   &:hover {
-    background-color: #FCF894;
+    background-color: #91D6ED;
+    opacity: .7;
+  }`
+
+const ListingDiv = styled.div`
+display: flex;
+flex-direction: column;
+margin: auto;`
+
+const ListingDisplay = styled.button`
+  width: 375px;
+  text-align: center;
+  border: none;
+  padding: 10px;
+  margin-right: 5px;
+  margin-top: 20px;
+  border-radius: 50px;
+  cursor: pointer;
+    &:hover {
+      opacity: .7;
+    }
+  @media (max-width: 500px) {
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 300px;
   }`
 
 export default Profile

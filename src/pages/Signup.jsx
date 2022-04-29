@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { db } from '../firebase.config';
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import OAuth from '../components/OAuth';
 
 const Signup = () => {
 
@@ -59,39 +60,149 @@ const Signup = () => {
 
   return (
     <Container>
-      <h1>hi</h1>
+      <SignIn>sign up.</SignIn>
 
       <form onSubmit={onSubmit}>
-      <input 
+      <DisplayName 
           type="name"
           value={name} 
           onChange={handleFormChange} 
           id="name"
+          placeholder="display name"
         />
-        <input 
+        <Email 
           type="email"
           value={email} 
           onChange={handleFormChange} 
           id="email"
+          placeholder="e-mail address"
         />
-        <input 
+        <Password 
           type="password"
           value={password} 
           onChange={handleFormChange} 
           id="password"
+          placeholder="password"
         />
-        <span onClick={showPass}>show password</span>
-        <button>sign up</button>
+        <SignInButton>sign up</SignInButton>
+        <OAuthButton><OAuth /></OAuthButton>
       </form>
 
-      {/* Google OAuth */}
-
+      <Links>
       <Link to='/signin'>already registered?</Link>
+      </Links>
     </Container>
   )
 }
 
+
 const Container = styled.div`
-  margin-top: 300px;`
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin-top: 200px;
+  flex-direction: column;
+`
+
+const SignIn = styled.h1`
+  display: flex;
+  margin: auto;
+  font-size: 40px;
+  margin-bottom: 30px;
+  background-color: #FCF894;
+  padding: 10px 20px 10px 20px;`
+
+const EmailField = styled.div`
+  display: flex;
+  margin: auto;
+  width: 80%;
+  flex-direction: column;`
+
+  const DisplayName = styled.input`
+  display: flex;
+  height: 30px;
+  width: 300px;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  font-family: Rubik;
+  font-size: 25px;
+  text-align: center;
+  border-bottom: 5px solid #E882B2;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 40px white inset !important;
+  &:focus {
+    outline: none;
+}
+`
+
+const Email = styled.input`
+  display: flex;
+  height: 30px;
+  width: 300px;
+  margin: auto;
+  background-color: transparent;
+  border: none;
+  font-family: Rubik;
+  font-size: 25px;
+  text-align: center;
+  border-bottom: 5px solid #91D6ED;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 40px white inset !important;
+  &:focus {
+    outline: none;
+}
+`
+const Password = styled.input`
+  display: flex;
+  height: 30px;
+  width: 300px;
+  margin: auto;
+  font-family: Rubik;
+  font-size: 25px;
+  text-align: center;
+  background-color: transparent;
+  border: none;
+  border-bottom: 5px solid #9491EC;
+  margin-bottom: 10px;
+  box-shadow: 0 0 0 40px white inset !important;
+    &:focus {
+        outline: none;
+    }
+  `
+
+  const SignInButton = styled.button`
+  display: flex;
+  margin: auto;
+  border: none;
+  width: 100px;
+  margin-top: 10px;
+  padding: 10px 10px 10px 25px;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  background-color: #FCF894;
+  transition: .1s;
+    &:hover {
+      background-color: #9491EC;
+    }`
+
+    const OAuthButton = styled.button`
+    display: flex;
+    border: none;
+    margin: auto;
+    margin-top: 10px;
+    width: 165px;
+    padding: 10px 0px 10px 20px;
+    border-radius: 20px 20px 20px 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: #91D6ED;
+    }`
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 10px;`
 
 export default Signup

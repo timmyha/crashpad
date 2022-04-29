@@ -10,13 +10,19 @@
   "dependencies": {
     "axios": "^0.27.1",
     "firebase": "^9.6.11",
+    "install": "^0.13.0",
+    "leaflet": "^1.8.0",
+    "nanoid": "^3.3.3",
+    "npm": "^8.8.0",
+    "rc-textarea": "^0.3.7",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "react-hot-toast": "^2.2.0",
     "react-icons": "^4.3.1",
-    "react-perfect-slider": "^2.0.1",
+    "react-leaflet": "^4.0.0",
     "react-router-dom": "^6.3.0",
-    "react-use-scroll-direction": "^0.1.0",
-    "styled-components": "^5.3.5"
+    "styled-components": "^5.3.5",
+    "swiper": "^8.1.4"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

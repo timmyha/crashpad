@@ -18,8 +18,9 @@ function Category() {
     const fetchListings = async () => {
       try {
         const listingsRef = collection(db, 'listings')
-        const q = query(listingsRef,
-                  orderBy('timestamp', 'desc'), limit(20)
+        const q = query(listingsRef, 
+                  where('type', '==', params.categoryName),
+                  orderBy('timestamp', 'desc'), limit(10)
               )
         
         const querySnap = await getDocs(q);
@@ -42,23 +43,25 @@ function Category() {
     fetchListings()
   }, [])
 
+  console.log(listings)
+
   return (
     <Container>
-      <CategoryTitle>all listings</CategoryTitle>
+      <CategoryTitle>{params.categoryName}s</CategoryTitle>
      {loading ? 'loading' 
       : listings && listings.length > 0 
       ? <>
         
 
         <main>
-            <List>
+            <ul>
               { listings.map(listing => {
                 return <ListingItem 
                         key={listing.id}
                         id={listing.id}
                         listing={listing.data} />
               })}
-            </List>
+            </ul>
         </main>
 
 
@@ -72,9 +75,8 @@ function Category() {
 
 const Container = styled.div`
   display: flex;
-  width: 1000px;
+  width: 100%;
   height: 100%;
-  margin: auto;
   margin-top: 200px;
   margin-bottom: 200px;
   flex-direction: column;
@@ -87,7 +89,5 @@ const CategoryTitle = styled.h1`
   margin-bottom: 20px;
 `
 
-const List = styled.ul`
-  `
 
 export default Category

@@ -17,7 +17,7 @@ const Splash = () => {
           <Subtitle style={{ "textDecoration": "underline 5px #9491EC" }}>
             crashpad
           </Subtitle>
-          <TextSpan>helps people around the world find cheap,
+          <TextSpan>helps people around the world find user-hosted,
             affordable temporary housing.</TextSpan>
         </SplashText>
       </MainSplash>
@@ -29,12 +29,12 @@ const Splash = () => {
           </Subtitle>
           <TextSpan>
             vacant rooms, couches, closets, crawlspaces and basements&mdash;
-            so you can spend more time busking and panhandling and less time finding a place
+            so you can spend more time roaming the streets and less time finding a place
             to crash.
           </TextSpan>
         </SplashText>
       </DiscoverSplash>
-      <MainSplash>
+      <ListSplash>
         <SplashText>
           <CgList size="50" style={{"marginBottom": "10px"}} />
           <Subtitle style={{ "textDecoration": "underline 5px #e882b2" }}>
@@ -45,13 +45,13 @@ const Splash = () => {
             of wayward travellers.
           </TextSpan>
         </SplashText>
-      </MainSplash>
+      </ListSplash>
       <CarouselDiv>
         <SplashText>
         <Subtitle style={{ "textDecoration": "underline 5px #FCF894" }}>
           what they're saying:
         </Subtitle>
-          <em>"Straight from the trainyards to my crashpad. Wow!" </em>
+          <em>"Straight from the freight train to my crashpad. Wow!" </em>
           &nbsp;&nbsp;&nbsp;&nbsp;The New York Slimes
         </SplashText>
         <SplashText>
@@ -79,14 +79,20 @@ const Container = styled.div`
 const MainSplash = styled.div`
   display: flex;
   width: 100%;
-  height: 75vh;
+  height: 85vh;
   background-color: white;`
 
 const DiscoverSplash = styled.div`
 display: flex;
 width: 100%;
-height: 75vh;
+height: 90vh;
 background-color: #FCF894;`
+
+const ListSplash = styled.div`
+  display: flex;
+  width: 100%;
+  height: 90vh;
+  background-color: #85FFE5;`
 
 const CarouselDiv = styled.div`
 display: flex;

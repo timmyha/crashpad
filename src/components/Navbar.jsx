@@ -36,6 +36,7 @@ const Navbar = () => {
 
 const Container = styled.div`
   display: flex;
+  z-index: 100000;
 `
 
 const TitleDiv = styled.div`
@@ -48,6 +49,7 @@ const TitleDiv = styled.div`
   width: 100%;
   cursor: pointer;
   transition: .1s;
+  z-index: 100000;
   &:hover {
     color: #F1E0AD;
   }`
@@ -62,6 +64,7 @@ const TitleDiv = styled.div`
   color: #181314;
   width: 100%;
   cursor: pointer;
+  z-index: 10000;
   &:hover {
     color: #FCF894;
   }`

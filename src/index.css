@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300&family=Rubik:wght@600&display=swap');
 
+@media (max-width: 500px) {
+  .text-area {
+    width: 350px;
+  }
+}
 body {
   margin: 0;
   font-family: Rubik, Karla, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -29,4 +34,24 @@ a {
 ::selection {
   background: black;
   color: white;
+}
+
+.text-area {
+  border: none;
+  border-bottom: 5px solid #9491EC;
+  font-size: 30px;
+  text-align: center;
+}
+
+.text-area:focus {
+  outline: none;
+}
+
+input[type="file"] {
+  position: flex;
+  z-index: -1;
+  top: 10px;
+  left: 8px;
+  font-size: 17px;
+  color: #b8b8b8;
 }

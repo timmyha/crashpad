@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import { CgProfile } from 'react-icons/cg';
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink, Link } from 'react-router-dom';
+import { useAuthStatus } from '../hooks/useAuthStatus'
 
 
 const Footer = () => {
+
+  const { loggedIn, loggedAuth }  = useAuthStatus()
 
   return (
 
@@ -17,7 +20,10 @@ const Footer = () => {
             ? {'color':'#E882B2'} 
             : {'color': 'black'})} 
           to="/profile"><CgProfile /></NavLink>
-        </ProfileIcon>
+        </ProfileIcon> 
+        { loggedIn 
+        ? <NewListing><Link to='/create'>new listing</Link></NewListing>
+        : <NewListing><Link to='/create'>sign in</Link></NewListing> }
         <Discover>
           <NavLink 
             style={navData => (
@@ -48,6 +54,7 @@ const Container = styled.div`
   justify-content: right;
   background-color: white;
   height: 60px;
+  z-index: 100000;
   box-shadow: 0 -5px 5px rgba(0, 0, 0, .1);
   bottom: 0px;`
 
@@ -79,4 +86,19 @@ const Listings = styled.p`
   text-decoration: none;
   color: #181314
 `
+
+const NewListing = styled.button`
+  border: none;
+  positon: absolute;
+  margin: auto;
+  width: 170px;
+  margin-top: -80px;
+  margin-right: -330px;
+  padding: 10px 0px 10px 0px;
+  border-radius: 40px 40px 40px 40px;
+  background-color: #85FFE5;
+  cursor: pointer;
+  &:hover {
+    opacity: .7;
+  }`
 export default Footer
