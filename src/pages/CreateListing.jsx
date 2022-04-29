@@ -43,8 +43,8 @@ const CreateListing = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    if (images.length > 5) {
-      toast.error("Image limit is a maximum of 5")
+    if (images.length < 1) {
+      toast.error("no")
     }
 
     const res = await fetch(`https://geocode.maps.co/search?q=${location}`);
@@ -243,7 +243,7 @@ const CreateListing = () => {
             placeholder='city, state?, country'
           />
 
-          <Label>pics?<br /></Label>
+          <PicsLabel>pics? (required)<br /></PicsLabel>
 
 
           <Input
@@ -283,6 +283,14 @@ const Label = styled.label`
   color: white;
   background: black;
   width: 60px;`
+
+const PicsLabel = styled.label`
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: white;
+  background: black;
+  width: 140px;`
 
 const Input = styled.input`
   background-color: transparent;
