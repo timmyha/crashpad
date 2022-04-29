@@ -170,7 +170,7 @@ const Amenity = styled.h4`
 const Image = styled.img`
   width: 400px;
   @media ( max-width: 400px ) {
-    width: 375px;
+    width: 350px;
   }`
 
 const ImageDiv = styled.div`
@@ -181,15 +181,18 @@ const ImageDiv = styled.div`
   max-width: 400px;
   max-height: 400px;
   padding: 10px 10px 10px 10px;
-  background-color: #fcf894;`
+  background-color: #fcf894;
+    @media ( max-width: 400px ) {
+    width: 350px;
+  }`
 
 const BlurbDiv = styled.div`
   display: flex;
   margin: auto;
   margin-top: 20px;
   padding: 50px;
-  padding-right: 100px;
-  padding-left: 100px;
+  padding-right: 30px;
+  padding-left: 30px;
   background-color: pink;
   margin-bottom: 20px;
   font-size: 23px;
@@ -206,13 +209,13 @@ const Renter = styled.h3`
   `
 const LeftQuote = styled.span`
   position: absolute;
-  margin-left: -90px;
+  margin-left: 0px;
   margin-top: -40px;
   font-size: 40px;`
 
 const RightQuote = styled.span`
   position: absolute;
-  margin-left: 420px;
+  margin-left: 330px;
   margin-top: 130px;
   font-size: 40px;`
 

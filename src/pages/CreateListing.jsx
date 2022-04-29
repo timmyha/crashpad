@@ -251,6 +251,7 @@ const CreateListing = () => {
             id='images'
             onChange={onMutate}
             accept='.jpg,.png,.jpeg'
+            style={{"fontSize":"20px"}}
             multiple
             required
           /><br />
