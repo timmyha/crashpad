@@ -19,8 +19,15 @@ const Navbar = () => {
     }
   }, [])
 
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+    });
+  };
+
   return (
-    <Link to="/">
+    <div onClick={scrollToTop}>
     <Container>
     { collapseNav
     ? <CollapseTitle>
@@ -30,7 +37,7 @@ const Navbar = () => {
     <SiteName>crashpad.</SiteName>
     </TitleDiv> }
     </Container>
-    </Link>
+    </div>
   )
 }
 
