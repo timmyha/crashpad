@@ -4,7 +4,7 @@
 this is a tongue-in-cheek app meant to possess similar functionality
 to airBnB.
 
-<img src='./images/preview.png'>
+<img src='./images/preview.png' width="400px">
 
 ### roadmap
 
