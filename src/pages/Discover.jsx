@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import image from '../images/a.jpg'
 
 function Discover() {
   return (
@@ -20,6 +21,14 @@ height: 100%;
 width: 100%;
 text-align: center;
 flex-direction: column;
-margin-top: 200px;`
+margin-top: 300px;`
+
+const CatDiv = styled.div`
+  display: flex;
+  margin: auto;
+  width: 80%;
+  font-size: 6rem;
+  background-image: linear-gradient(#e66465, transparent, blue), url(${props => props.img});
+  height: 300px;`
 
 export default Discover

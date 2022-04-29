@@ -78,6 +78,10 @@ const Discover = styled.p`
     color: #181314;
     &:active {
       text-decoration: underline 5px #9491EC;
+      -webkit-text-decoration-line:  underline !important;
+      -webkit-text-decoration-color: #9491EC !important;
+      -webkit-text-decoration-style: solid !important;
+      -webkit-text-decoration-thickness: 5px !important;
     }
 `
 const Listings = styled.p`
