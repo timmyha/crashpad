@@ -80,6 +80,7 @@ const MainSplash = styled.div`
   display: flex;
   width: 100%;
   height: 90vh;
+  margin-top: 10px;
   background-color: white;`
 
 const DiscoverSplash = styled.div`
@@ -98,7 +99,7 @@ const CarouselDiv = styled.div`
 display: flex;
 flex-direction: column;
 width: 100%;
-height: 77vh;
+height: 100%;
 padding-top: 100px;
 padding-bottom: 100px;
 background-color: #91D6ED;
