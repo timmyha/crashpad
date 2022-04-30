@@ -313,6 +313,7 @@ const FormItem = styled.div`
   height: 100vh;
   @media (max-width: 500px) {
     margin-left: 10px;
+    margin-right: 10px;
   }`
 
 const Buttons = styled.div`
@@ -353,7 +354,7 @@ background-color: #E882B2;
   opacity: .7;
   }
 margin-bottom: 200px;
-  @media (max-width: 400px) {
+  @media (max-width: 500px) {
     width: 300px;
   }`
 
