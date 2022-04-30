@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
 import { MdKingBed } from 'react-icons/md';
 import { FaGlobeAmericas } from 'react-icons/fa'
 import { CgList } from 'react-icons/cg'
@@ -7,6 +6,38 @@ import { useEffect, useState } from 'react'
 
 
 const Splash = () => {
+
+  const [ textFade, setTextFade ] = useState({
+    discovery: false,
+    list: false
+  })
+
+
+  const controlDiscText = () => {
+    window.scrollY > 500
+    ? setTextFade((prev) => ({
+      ...prev,
+      discovery: true
+    })) 
+    : ''
+  }
+
+  const controlListText = () => {
+     window.scrollY > 1300
+    ? setTextFade((prev) => ({
+      ...prev,
+      list: true
+    })) : ''
+  }
+
+  useEffect(() => {
+    window.addEventListener('scroll', controlDiscText)
+    window.addEventListener('scroll', controlListText)
+
+    return () => {
+      window.removeEventListener('scroll', controlListText)
+    }
+  }, [])
 
   return (
 
@@ -27,7 +58,7 @@ const Splash = () => {
           <Subtitle style={{ "textDecoration": "underline 5px #91D6ED" }}>
             discover
           </Subtitle>
-          <TextSpan>
+          <TextSpan id={ textFade.discovery ? `splash--discover_show` : `splash--discover`}>
             vacant rooms, couches, closets, crawlspaces and basements&mdash;
             so you can spend more time roaming the streets and less time finding a place
             to crash.
@@ -40,7 +71,7 @@ const Splash = () => {
           <Subtitle style={{ "textDecoration": "underline 5px #e882b2" }}>
             list
           </Subtitle>
-          <TextSpan>
+          <TextSpan id={ textFade.list ? `splash--list_show` : `list--discover`}>
             your empty space, meet fellow vagrants, and tap into our network
             of wayward travellers.
           </TextSpan>

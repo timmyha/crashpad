@@ -46,3 +46,27 @@ a {
 .text-area:focus {
   outline: none;
 }
+
+#splash--discover {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#splash--discover_show {
+  visibility: visible;
+  transition-timing-function: ease-in;
+  transition: 1.5s;
+  opacity: 1;
+}
+
+#list--discover {
+  visibility: hidden;
+  opacity: 0;
+}
+
+#splash--list_show {
+  visibility: visible;
+  transition-timing-function: ease-in;
+  transition: 1.5s;
+  opacity: 1;
+}
