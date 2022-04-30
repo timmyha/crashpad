@@ -15,7 +15,8 @@ function Discover() {
       sleep among the skyscrapers vertically in a <Closet><Link to="/category/closet">closet</Link></Closet>.
       <br />&emsp;&emsp;find your <span style={{"fontSize":"40px", 
                                     "fontFamily":"rubik",
-                                    "backgroundColor":"#85ffe5"}}>
+                                    "backgroundColor":"#85ffe5",
+                                    "lineHeight":"100px"}}>
                             <Link to='/'>crashpad.</Link>
                                       </span>
     </Container>
@@ -39,37 +40,37 @@ margin-top: 200px;
   }`
 
 const Couch = styled.span`
-  color: #e882b2;
+  color: black;
   font-family: Rubik;
   font-size: 40px;
-  background-color: #9491ec;
+  text-decoration: underline 5px #9491ec;
     &:hover {
       opacity: .6;
     }`
 
 const Crawlspace = styled.span`
-  color: #91d6ed;
+  color: black;
   font-family: Rubik;
   font-size: 40px;
-  background-color: #fcf894;
+  text-decoration: underline 5px #fcf894;
     &:hover {
       opacity: .6;
     }`
 
 const Closet = styled.span`
-  color: #9491ec;
+  color: black;
   font-family: Rubik;
   font-size: 40px;
-  background-color: #91d6ed;
+  text-decoration: underline 5px #91d6ed;
     &:hover {
       opacity: .6;
     }`
 
 const Basement = styled.span`
-  color: #85ffe5;
+  color: black;
   font-family: Rubik;
   font-size: 40px;
-  background-color: #e882b2;
+  text-decoration: underline 5px #e882b2;
     &:hover {
       opacity: .6;
     }`
