@@ -110,7 +110,7 @@ function Profile() {
           setUpdateUser(!updateUser)
         }}
           style={updateUser ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "#e882b2" }}>
-          {updateUser ? 'done?' : 'edit?'}
+          {updateUser ? 'done?' : 'edit'}
         </Edit>
         <Logout
           className="logOut"
