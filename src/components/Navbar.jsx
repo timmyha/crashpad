@@ -1,10 +1,15 @@
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { BsFillArrowUpCircleFill } from 'react-icons/bs'
 
 const Navbar = () => {
 
   const [collapseNav, setCollapseNav] = useState(false)
+  const [ scrollUp, setScrollUp ] = useState(false)
+
+  const navigate = useNavigate()
   
   const controlNavbar = () => {
     window.scrollY > 130
@@ -12,9 +17,19 @@ const Navbar = () => {
     : setCollapseNav(false)
   }
 
+  const controlScrollUp = () => {
+    window.scrollY > 500
+    ? setScrollUp(true) 
+    : setScrollUp(false)
+  }
+
+  console.log(scrollUp)
+
   useEffect(() => {
     window.addEventListener('scroll', controlNavbar)
+    window.addEventListener('scroll', controlScrollUp)
     return () => {
+      window.removeEventListener('scroll', controlNavbar)
       window.removeEventListener('scroll', controlNavbar)
     }
   }, [])
@@ -26,11 +41,16 @@ const Navbar = () => {
     });
   };
 
+  const onClick = () => {
+      navigate('/')
+  }
+
   return (
-    <div onClick={scrollToTop}>
+    <div onClick={onClick}>
     <Container>
     { collapseNav
     ? <CollapseTitle>
+    { scrollUp && <ScrollUpDiv><BsFillArrowUpCircleFill onClick={scrollToTop} /></ScrollUpDiv> }
     <CollapseName>crashpad.</CollapseName>
     </CollapseTitle>
     : <TitleDiv>
@@ -45,6 +65,14 @@ const Container = styled.div`
   display: flex;
   z-index: 100000;
 `
+
+const ScrollUpDiv = styled.div`
+  display: flex;
+  position: absolute;
+  margin-left: 90%;
+  margin-top: 10%;
+  font-size: 50px;
+  color: #9491ec;`
 
 const TitleDiv = styled.div`
   display: flex;
