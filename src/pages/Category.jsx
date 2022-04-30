@@ -47,7 +47,10 @@ function Category() {
 
   return (
     <Container>
-      <CategoryTitle>{params.categoryName}s</CategoryTitle>
+      <CategoryTitle>{params.categoryName}
+    { params.categoryName[params.categoryName.length - 1] === "h" 
+      ? 'es' 
+      : 's'}</CategoryTitle>
      {loading ? 'loading' 
       : listings && listings.length > 0 
       ? <>
