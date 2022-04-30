@@ -24,7 +24,7 @@ function Discover() {
 }
 
 const Container = styled.div`
-height: 100vh;
+height: 100%;
 font-size: 30px;
 width: 80%;
 max-width: 670px;
@@ -33,7 +33,7 @@ line-height: 50px;
 font-family: Karla;
 text-align: justify;
 flex-direction: column;
-margin-top: 300px;
+margin-top: 200px;
   @media (max-width: 500px) {
     margin-bottom: 200px;
   }`
