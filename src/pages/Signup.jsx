@@ -130,7 +130,8 @@ const OrText = styled.h1`
   font-size: 20px;
   color: white;
   display: flex;
-  margin: auto;`
+  margin: auto;
+`;
 
   const DisplayName = styled.input`
   display: flex;
@@ -224,7 +225,7 @@ const Links = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 10px;
+  margin-top: 30px;
 `;
 
 export default Signup

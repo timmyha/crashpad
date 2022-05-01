@@ -83,7 +83,6 @@ const Signin = () => {
 
 
       <Links>
-
         <Link to="/forgotpassword">forgot password?&nbsp;</Link>
         <Link to='/signup'>not registered?</Link>
       </Links>
@@ -195,8 +194,10 @@ const OAuthButton = styled.button`
 const Links = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100px;
+  text-align: center;
+  justify-content: space-around;
   margin: auto;
-  margin-top: 10px;
 `;
 
 export default Signin
