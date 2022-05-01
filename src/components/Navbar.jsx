@@ -40,6 +40,7 @@ const Navbar = () => {
 
   const onClick = () => {
     navigate('/');
+    console.log("click")
   };
 
   return (
@@ -50,13 +51,11 @@ const Navbar = () => {
               &&  <ScrollUpDiv>
                     <BsFillArrowUpCircleFill onClick={scrollToTop} />
                   </ScrollUpDiv>}
-              <div onClick={onClick}>
-            <CollapseName>crashpad.</CollapseName>
-              </div>
-          </CollapseTitle>
-          : <TitleDiv>
-            <SiteName>crashpad.</SiteName>
-          </TitleDiv> }
+              <CollapseName>crashpad.</CollapseName>
+            </CollapseTitle>
+          : <TitleDiv onClick={onClick}>
+              <SiteName>crashpad.</SiteName> 
+            </TitleDiv> }
       </Container>
   );
 };
