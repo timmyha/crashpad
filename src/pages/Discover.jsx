@@ -17,8 +17,8 @@ function Discover() {
       <DiscoverCard 
         icon={<FaCouch />}
         text={`You'd think something as ubiquitous as the couch
-            would have a longer Wikipedia article. Find the 
-            right couch for you.`}
+            would have a longer Wikipedia article. Find pull-out 
+            beds, ottomans, sectionals, chaise longues, and more.`}
         category={'couch'}
         color={colors[0]}
         lineColor={colors[3]}
