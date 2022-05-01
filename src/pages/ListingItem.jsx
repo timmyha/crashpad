@@ -40,6 +40,7 @@ const Card = styled.div`
   display: flex;
   width: 360px;
   border-radius: 10px;
+  box-shadow: 0 2px 0.5rem gray;
 `;
 
 const ListingImg = styled.img`

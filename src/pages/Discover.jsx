@@ -1,24 +1,55 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import image from '../images/a.jpg'
+import { FaCouch } from 'react-icons/fa'
+import { GiHoleLadder, Gi3DStairs } from 'react-icons/gi'
+import { BiCloset } from 'react-icons/bi'
+import DiscoverCard from '../components/DiscoverCard';
 
 function Discover() {
+
+  const colors = ["#E882B2", "#85FFE5", "#FCF894", 
+                  "#91D6ED", "#9491EC"];
+
+
   return (
 
     <Container>
-      hop on a freight train to LA and sleep
-      on a <Link to="/category/couch"><Couch> couch</Couch></Link>.&emsp; get comfy
-      in a <Link to="/category/crawlspace"><Crawlspace>crawlspace</Crawlspace></Link>
-      &nbsp;in the shadow of the eiffel tower.&emsp; picture yourself atop the empire
-      state building from a brooklyn <Basement>
-      <Link to="/category/basement">basement</Link></Basement>.&emsp; broke in tokyo?
-      sleep among the skyscrapers vertically in a <Closet><Link to="/category/closet">closet</Link></Closet>.
-      <br />&emsp;&emsp;find your <span style={{"fontSize":"40px", 
-                                    "fontFamily":"rubik",
-                                    "backgroundColor":"#85ffe5",
-                                    "lineHeight":"100px"}}>
-                            <Link to='/'>crashpad.</Link>
-                                      </span>
+      <DiscoverCard 
+        icon={<FaCouch />}
+        text={`You'd think something as ubiquitous as the couch
+            would have a longer Wikipedia article. Find the 
+            right couch for you.`}
+        category={'couch'}
+        color={colors[0]}
+        lineColor={colors[3]}
+      />
+      <DiscoverCard 
+        icon={<Gi3DStairs />}
+        text={`Drift off into peaceful, subterranean sleep knowing
+        wholeheartedly that it's impossible to be defenestrated
+        within the confines of a basement.`}
+        category={'basement'}
+        color={colors[3]}
+        lineColor={colors[4]}
+      />
+        <DiscoverCard 
+          icon={<GiHoleLadder />}
+          text={`No, you don't have to pay the troll toll to get
+          into this hole— the crawlspace is generally the most affordable
+          option for the backpacked traveller.`}
+          category={'crawlspace'}
+          color={colors[4]}
+          lineColor={colors[2]}
+        />
+      <DiscoverCard 
+        icon={<BiCloset />}
+        text={`In the perfect closet, you can sleep as tall
+          as the skyscrapers of whatever city you're laying your
+          head. That is to say— vertically.`}
+        category={'closet'}
+        color={colors[1]}
+        lineColor={colors[0]}
+      />
     </Container>
 
   )
@@ -40,44 +71,6 @@ margin-top: 200px;
   }
 `;
 
-const Couch = styled.span`
-  color: black;
-  font-family: Rubik;
-  font-size: 40px;
-  text-decoration: underline 5px #9491ec;
-    &:hover {
-      opacity: .6;
-    }
-`;
 
-const Crawlspace = styled.span`
-  color: black;
-  font-family: Rubik;
-  font-size: 40px;
-  text-decoration: underline 5px #fcf894;
-    &:hover {
-      opacity: .6;
-    }
-`;
-
-const Closet = styled.span`
-  color: black;
-  font-family: Rubik;
-  font-size: 40px;
-  text-decoration: underline 5px #91d6ed;
-    &:hover {
-      opacity: .6;
-    }
-`;
-
-const Basement = styled.span`
-  color: black;
-  font-family: Rubik;
-  font-size: 40px;
-  text-decoration: underline 5px #e882b2;
-    &:hover {
-      opacity: .6;
-    }
-`;
 
 export default Discover

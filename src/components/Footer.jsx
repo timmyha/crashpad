@@ -99,6 +99,7 @@ const NewListing = styled.button`
   border-radius: 40px 40px 40px 40px;
   background-color: #85FFE5;
   cursor: pointer;
+  box-shadow: 0 2px 0.5rem gray;
   &:hover {
     opacity: .7;
   }
