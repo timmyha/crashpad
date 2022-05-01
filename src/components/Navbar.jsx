@@ -43,21 +43,21 @@ const Navbar = () => {
   };
 
   return (
-    <div onClick={onClick}>
       <Container>
         { collapseNav
           ? <CollapseTitle>
             { scrollUp
-              && <ScrollUpDiv>
-                <BsFillArrowUpCircleFill onClick={scrollToTop} />
-              </ScrollUpDiv>}
+              &&  <ScrollUpDiv>
+                    <BsFillArrowUpCircleFill onClick={scrollToTop} />
+                  </ScrollUpDiv>}
+              <div onClick={onClick}>
             <CollapseName>crashpad.</CollapseName>
+              </div>
           </CollapseTitle>
           : <TitleDiv>
             <SiteName>crashpad.</SiteName>
           </TitleDiv> }
       </Container>
-    </div>
   );
 };
 
