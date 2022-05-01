@@ -109,7 +109,8 @@ const Listing = () => {
   )
 }
 const ContentDiv = styled.div`
-display: flex;`
+  display: flex;
+`;
 
 const Container = styled.div`
   display: flex;
@@ -119,14 +120,15 @@ const Container = styled.div`
   z-index: 100;
   background-color: white;
   flex-direction: column;
-  box-shadow: 0 -5px 5px rgba(0, 0, 0, .1);`
+  box-shadow: 0 -5px 5px rgba(0, 0, 0, .1);
+`;
 
 const MapDiv = styled.div`
   width: 100vw;
   height: 300px;
   background-color: transparent;
   margin-top: -30px;
-  `
+`;
 
 const PageTitle = styled.h1`
   display: flex;
@@ -137,7 +139,7 @@ const PageTitle = styled.h1`
   padding: 10px;
   font-size: 40px;
   text-decoration: underline 5px #9491ec;
-  `
+`;
 
 const Subtitle = styled.h2`
   display: flex;
@@ -147,7 +149,8 @@ const Subtitle = styled.h2`
   font-size: 35px;
   background-color: #85ffe5;
   padding: 5px;
-  `
+`;
+
 const Amenities = styled.div`
   display: flex;
   flex-direction: row;
@@ -155,7 +158,7 @@ const Amenities = styled.div`
   margin-top: 10px;
   margin-bottom: 0px;
   width: 300px;
-  `
+`;
 
 const Amenity = styled.h4`
   display: flex;
@@ -167,13 +170,14 @@ const Amenity = styled.h4`
   color: white;
   padding: 5px;
   margin-right: 10px;
-  `
+`;
 
 const Image = styled.img`
   width: 400px;
   @media ( max-width: 400px ) {
     width: 350px;
-  }`
+  }
+`;
 
 const ImageDiv = styled.div`
   display: flex;
@@ -186,7 +190,8 @@ const ImageDiv = styled.div`
   background-color: #fcf894;
     @media ( max-width: 400px ) {
     width: 350px;
-  }`
+  }
+`;
 
 const BlurbDiv = styled.div`
   display: flex;
@@ -199,7 +204,8 @@ const BlurbDiv = styled.div`
   margin-bottom: 20px;
   font-size: 23px;
   height: 130px;
-  width: 300px;`
+  width: 300px;
+`;
 
 const Renter = styled.h3`
   display: flex;
@@ -208,28 +214,33 @@ const Renter = styled.h3`
   margin-bottom: 0px;
   font-size: 20px;
   text-decoration: underline 5px #9491ec;
-  `
+`;
+
 const LeftQuote = styled.span`
   position: absolute;
   margin-left: 0px;
   margin-top: -40px;
-  font-size: 40px;`
+  font-size: 40px;
+`;
 
 const RightQuote = styled.span`
   position: absolute;
   margin-left: 270px;
   margin-top: 130px;
-  font-size: 40px;`
+  font-size: 40px;
+`;
 
 const Blurb = styled.div`
   display: flex;
-  margin: auto;`
+  margin: auto;
+`;
 
 const ContactDiv = styled.div`
   display: flex;
   margin: auto;
   margin-bottom: 100px;
-  margin-top: 0px;`
+  margin-top: 0px;
+`;
 
 const Contact = styled.div`
   text-align: center;
@@ -244,6 +255,7 @@ const Contact = styled.div`
     }
     @media (max-width: 500px) {
       width: 300px;
-    }`
+    }
+`;
 
 export default Listing

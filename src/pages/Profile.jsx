@@ -26,7 +26,7 @@ function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const getUserListings= async () => {
+    const getUserListings = async () => {
       const listingsRef = collection(db, 'listings');
       const q = query(listingsRef,
         where('userRef', '==', auth.currentUser.uid),
@@ -85,11 +85,11 @@ function Profile() {
   }
 
   const listingDisplay = listings && listings.map(listing => {
-      return (
+    return (
       <Link key={listing.id} to={`/category/${listing.data.type}/${listing.id}`}>
-      <ListingDisplay>{listing.data.name}</ListingDisplay>
+        <ListingDisplay>{listing.data.name}</ListingDisplay>
       </Link>
-      )
+    )
   })
 
   return (
@@ -117,15 +117,15 @@ function Profile() {
           onClick={handleLogout}
         >logout</Logout>
       </Buttons>
-      { listings && 
-      <>
-      <NameDisplay>
-        your listings:
-      </NameDisplay>
-      <ListingDiv>
-      {listingDisplay}
-      </ListingDiv>
-      </>
+      {listings &&
+        <>
+          <NameDisplay>
+            your listings:
+          </NameDisplay>
+          <ListingDiv>
+            {listingDisplay}
+          </ListingDiv>
+        </>
 
       }
     </Container>

@@ -14,20 +14,19 @@ const Signup = () => {
     email: '',
     password: '',
     name: ''
-  })
+  });
 
   const { name, email, password } = formData;
 
   const navigate = useNavigate();
 
   const handleFormChange = (e) => {
-    let { value, id }= e.target
+    let { value, id }= e.target;
     setFormData(prev => ({
       ...prev,
       [id]: value
-    }))
-
-  }
+    }));
+  };
 
   const onSubmit = async (e) => {
       e.preventDefault();
@@ -85,8 +84,8 @@ const Signup = () => {
           placeholder="password"
         />
         <SignInButton>sign up</SignInButton>
-        <OAuthButton><OAuth /></OAuthButton>
       </form>
+      <OAuthButton><OAuth /></OAuthButton>
 
       <Links>
       <Link to='/signin'>already registered?</Link>
@@ -102,7 +101,7 @@ const Container = styled.div`
   height: 100%;
   margin-top: 200px;
   flex-direction: column;
-`
+`;
 
 const SignIn = styled.h1`
   display: flex;
@@ -110,13 +109,8 @@ const SignIn = styled.h1`
   font-size: 40px;
   margin-bottom: 30px;
   background-color: #FCF894;
-  padding: 10px 20px 10px 20px;`
-
-const EmailField = styled.div`
-  display: flex;
-  margin: auto;
-  width: 80%;
-  flex-direction: column;`
+  padding: 10px 20px 10px 20px;
+`;
 
   const DisplayName = styled.input`
   display: flex;
@@ -133,8 +127,8 @@ const EmailField = styled.div`
   box-shadow: 0 0 0 40px white inset !important;
   &:focus {
     outline: none;
-}
-`
+  }
+`;
 
 const Email = styled.input`
   display: flex;
@@ -151,8 +145,9 @@ const Email = styled.input`
   box-shadow: 0 0 0 40px white inset !important;
   &:focus {
     outline: none;
-}
-`
+  }
+`;
+
 const Password = styled.input`
   display: flex;
   height: 30px;
@@ -169,14 +164,14 @@ const Password = styled.input`
     &:focus {
         outline: none;
     }
-  `
+`;
 
-  const SignInButton = styled.button`
+const SignInButton = styled.button`
   display: flex;
   margin: auto;
   border: none;
   width: 100px;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 10px 10px 10px 25px;
   border-radius: 20px 20px 20px 20px;
   cursor: pointer;
@@ -184,25 +179,28 @@ const Password = styled.input`
   transition: .1s;
     &:hover {
       background-color: #9491EC;
-    }`
+    }
+`;
 
-    const OAuthButton = styled.button`
-    display: flex;
-    border: none;
-    margin: auto;
-    margin-top: 10px;
-    width: 165px;
-    padding: 10px 0px 10px 20px;
-    border-radius: 20px 20px 20px 20px;
-    cursor: pointer;
-    &:hover {
-      background-color: #91D6ED;
-    }`
+const OAuthButton = styled.button`
+  display: flex;
+  border: none;
+  margin: auto;
+  margin-top: 10px;
+  width: 165px;
+  padding: 10px 0px 10px 20px;
+  border-radius: 20px 20px 20px 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #91D6ED;
+  }
+`;
 
 const Links = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 10px;`
+  margin-top: 10px;
+`;
 
 export default Signup

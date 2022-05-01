@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
 import Textarea from 'rc-textarea';
 import toast from 'react-hot-toast';
-import { nanoid } from 'nanoid'
+import { nanoid } from 'nanoid';
 
 const CreateListing = () => {
 
@@ -21,11 +21,11 @@ const CreateListing = () => {
     location: '',
     images: {},
     geolocation: { lat: '', lon: '' }
-  })
+  });
 
-  let { type, name, blurb,
-    bathroom, furnished, price, location,
-    images, geolocation } = formData;
+  let { type, name, blurb,bathroom, 
+        furnished, price, location,
+        images, geolocation } = formData;
 
   const auth = getAuth();
   const navigate = useNavigate();
@@ -35,17 +35,16 @@ const CreateListing = () => {
       if (user) {
         setFormData({ ...formData, userRef: user.uid })
       } else { navigate('/signin') }
-    })
-
-  }, [])
+    });
+  }, []);
 
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
     if (images.length < 1) {
-      toast.error("no")
-    }
+      toast.error("no");
+    };
 
     const res = await fetch(`https://geocode.maps.co/search?q=${location}`);
     const data = await res.json();
@@ -53,19 +52,19 @@ const CreateListing = () => {
     data[0] === undefined
       ? toast.error("Couldn't find location.")
       : geolocation.lat = data[0].lat,
-      geolocation.lon = data[0].lon
+      geolocation.lon = data[0].lon;
 
     const storeImage = async (image) => {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
-        const fileName = `${auth.currentUser.uid}-${image.name}-${nanoid()}`
-        const storageRef = ref(storage, 'images/' + fileName)
-        const uploadTask = uploadBytesResumable(storageRef, image)
+        const fileName = `${auth.currentUser.uid}-${image.name}-${nanoid()}`;
+        const storageRef = ref(storage, 'images/' + fileName);
+        const uploadTask = uploadBytesResumable(storageRef, image);
 
         uploadTask.on('state_changed',
           (snapshot) => {
-            const progress = 
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            const progress =
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             toast('Upload is ' + progress + '% done');
             switch (snapshot.state) {
               case 'paused':
@@ -74,7 +73,7 @@ const CreateListing = () => {
               case 'running':
                 console.log('Upload is running');
                 break;
-            }
+            };
           },
           (error) => {
             reject(error)
@@ -86,51 +85,51 @@ const CreateListing = () => {
             });
           }
         );
-      })
-    }
+      });
+    };
 
-    const imgUrls = await Promise.all(
-      [...images].map((image) => storeImage(image))
-    ).catch(() => {
-      toast.error('Error uploading images.')
-    })
+    const imgUrls = await Promise
+      .all([...images].map((image) => storeImage(image)))
+      .catch(() => {
+        toast.error('Error uploading images.')
+      });
 
     const formDataCopy = {
       ...formData,
       imgUrls,
       timestamp: serverTimestamp()
-    }
-      delete formDataCopy.images
-      
-      const docRef = await addDoc(collection(db, 'listings'), formDataCopy)
-      toast.success('Listing added!')
-      navigate(`/category/${formDataCopy.type}/${docRef.id}`)
-  }
+    };
+    delete formDataCopy.images;
+
+    const docRef = await addDoc(collection(db, 'listings'), formDataCopy);
+    toast.success('Listing added!');
+    navigate(`/category/${formDataCopy.type}/${docRef.id}`);
+  };
 
   const onMutate = (e) => {
     let boolean = null;
-    let { value, files, id } = e.target
+    let { value, files, id } = e.target;
 
     if (value === 'true') {
-      boolean = true
+      boolean = true;
     }
     if (value === 'false') {
-      boolean = false
+      boolean = false;
     }
     if (files) {
       setFormData(prev => ({
         ...prev,
         images: files
-      }))
-    }
+      }));
+    };
 
     if (!files) {
       setFormData(prev => ({
         ...prev,
         [id]: boolean ?? value,
-      }))
-    }
-  }
+      }));
+    };
+  };
 
   return (
     <Container>
@@ -142,25 +141,33 @@ const CreateListing = () => {
             <Button
               type="button"
               id='type'
-              style={type === 'couch' ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "lightgray" }}
+              style={type === 'couch' 
+                    ? { "backgroundColor": "#85FFE5" } 
+                    : { "backgroundColor": "lightgray" }}
               value='couch'
               onClick={onMutate}>couch</Button>
             <Button
               type="button"
               id='type'
-              style={type === 'basement' ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "lightgray" }}
+              style={type === 'basement' 
+                    ? { "backgroundColor": "#85FFE5" } 
+                    : { "backgroundColor": "lightgray" }}
               value='basement'
               onClick={onMutate}>basement</Button>
             <Button
               type="button"
               id='type'
-              style={type === 'crawlspace' ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "lightgray" }}
+              style={type === 'crawlspace' 
+                    ? { "backgroundColor": "#85FFE5" } 
+                    : { "backgroundColor": "lightgray" }}
               value='crawlspace'
               onClick={onMutate}>crawlspace</Button>
             <Button
               type="button"
               id='type'
-              style={type === 'closet' ? { "backgroundColor": "#85FFE5" } : { "backgroundColor": "lightgray" }}
+              style={type === 'closet' 
+                    ? { "backgroundColor": "#85FFE5" } 
+                    : { "backgroundColor": "lightgray" }}
               value='closet'
               onClick={onMutate}>closet</Button>
           </Buttons>
@@ -243,20 +250,23 @@ const CreateListing = () => {
             placeholder='city, state?, country'
           />
 
-          <PicsLabel>pics? (required)<br /></PicsLabel>
-
+          <PicsLabel>
+            pics? (required)<br />
+          </PicsLabel>
 
           <Input
             type='file'
             id='images'
             onChange={onMutate}
             accept='.jpg,.png,.jpeg'
-            style={{"fontSize":"20px"}}
+            style={{ "fontSize": "20px" }}
             multiple
             required
           /><br />
 
-          <SubmitButton type="submit">create listing</SubmitButton>
+          <SubmitButton type="submit">
+            create listing
+          </SubmitButton>
 
         </form>
       </FormItem>
@@ -269,21 +279,24 @@ const Container = styled.div`
   display: flex;
   margin: auto;
   margin-top: 200px;
-  flex-direction: column;`
+  flex-direction: column;
+`;
 
 const Header = styled.h1`
   display: flex;
   margin: auto;
   font-size: 40px;
   margin-bottom: 40px;
-  text-decoration: underline 5px #91D6ED`
+  text-decoration: underline 5px #91D6ED;
+`;
 
 const Label = styled.label`
   display: flex;
   margin-top: 20px;
   color: white;
   background: black;
-  width: 60px;`
+  width: 60px;
+`;
 
 const PicsLabel = styled.label`
   display: flex;
@@ -291,7 +304,8 @@ const PicsLabel = styled.label`
   margin-bottom: 10px;
   color: white;
   background: black;
-  width: 140px;`
+  width: 140px;
+`;
 
 const Input = styled.input`
   background-color: transparent;
@@ -306,7 +320,7 @@ const Input = styled.input`
   @media (max-width: 500px) {
       width: 350px;
   }
-`
+`;
 
 const FormItem = styled.div`
   display: flex;
@@ -314,7 +328,8 @@ const FormItem = styled.div`
   @media (max-width: 500px) {
     margin-left: 10px;
     margin-right: 10px;
-  }`
+  }
+`;
 
 const Buttons = styled.div`
   display: flex;
@@ -322,7 +337,8 @@ const Buttons = styled.div`
   flex-direction: row;
     @media (max-width: 500px) {
       flex-direction: column; ;
-    }`
+    }
+`;
 
 const Button = styled.button`
   width: 120px;
@@ -339,7 +355,8 @@ const Button = styled.button`
     margin-top: 5px;
     margin-left: 10px;
     width: 300px;
-  }`
+  }
+`;
 
 const SubmitButton = styled.button`
 text-align: center;
@@ -356,6 +373,7 @@ background-color: #E882B2;
 margin-bottom: 200px;
   @media (max-width: 500px) {
     width: 300px;
-  }`
+  }
+`;
 
 export default CreateListing

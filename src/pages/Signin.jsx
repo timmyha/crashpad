@@ -13,7 +13,7 @@ const Signin = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
-  })
+  });
 
   const { email, password } = formData;
 
@@ -24,8 +24,8 @@ const Signin = () => {
     setFormData(prev => ({
       ...prev,
       [id]: value
-    }))
-  }
+    }));
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -36,18 +36,18 @@ const Signin = () => {
         const user = userCredential.user;
 
         if(user) {
-          navigate('/')
-          toast.success('successfully logged in.')
+          navigate('/');
+          toast.success('successfully logged in.');
         }
       })
       .catch((error) => {
-        console.log(error.code, error.message)
-        toast.error('password must exceed six characters')
+        console.log(error.code, error.message);
+        toast.error('password must exceed six characters');
   });
   }
 
   const showPass = () => {
-    setShowPassword(!showPassword)
+    setShowPassword(!showPassword);
   }
 
   return (
@@ -76,9 +76,8 @@ const Signin = () => {
       </EmailField>
 
         <SignInButton>sign in</SignInButton>
-        
-        <OAuthButton><OAuth /></OAuthButton>
       </form>
+      <OAuthButton><OAuth /></OAuthButton>
 
       
       <Links>
@@ -87,8 +86,8 @@ const Signin = () => {
       <Link to='/signup'>not registered?</Link>
       </Links>
     </Container>
-  )
-}
+  );
+};
 
 const Container = styled.div`
   display: flex;
@@ -97,7 +96,7 @@ const Container = styled.div`
   margin: auto;
   margin-top: 200px;
   flex-direction: column;
-`
+`;
 
 const SignIn = styled.h1`
   display: flex;
@@ -105,13 +104,15 @@ const SignIn = styled.h1`
   font-size: 40px;
   margin-bottom: 30px;
   background-color: #FCF894;
-  padding: 10px 20px 10px 20px;`
+  padding: 10px 20px 10px 20px;
+`;
 
 const EmailField = styled.div`
   display: flex;
   margin: auto;
   width: 80%;
-  flex-direction: column;`
+  flex-direction: column;
+`;
 
 const Email = styled.input`
   display: flex;
@@ -128,8 +129,8 @@ const Email = styled.input`
   box-shadow: 0 0 0 40px white inset !important;
   &:focus {
     outline: none;
-}
-`
+  }
+`;
 const Password = styled.input`
   display: flex;
   height: 30px;
@@ -146,7 +147,7 @@ const Password = styled.input`
     &:focus {
         outline: none;
     }
-  `
+`;
 
   const SignInButton = styled.button`
   display: flex;
@@ -161,7 +162,8 @@ const Password = styled.input`
   transition: .1s;
     &:hover {
       background-color: #9491EC;
-    }`
+    }
+`;
 
   const OAuthButton = styled.button`
     display: flex;
@@ -174,12 +176,14 @@ const Password = styled.input`
     cursor: pointer;
     &:hover {
       background-color: #91D6ED;
-    }`
+    }
+`;
 
 const Links = styled.div`
   display: flex;
   flex-direction: column;
   margin: auto;
-  margin-top: 10px;`
+  margin-top: 10px;
+`;
 
 export default Signin

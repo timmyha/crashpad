@@ -37,7 +37,8 @@ flex-direction: column;
 margin-top: 200px;
   @media (max-width: 500px) {
     margin-bottom: 200px;
-  }`
+  }
+`;
 
 const Couch = styled.span`
   color: black;
@@ -46,7 +47,8 @@ const Couch = styled.span`
   text-decoration: underline 5px #9491ec;
     &:hover {
       opacity: .6;
-    }`
+    }
+`;
 
 const Crawlspace = styled.span`
   color: black;
@@ -55,7 +57,8 @@ const Crawlspace = styled.span`
   text-decoration: underline 5px #fcf894;
     &:hover {
       opacity: .6;
-    }`
+    }
+`;
 
 const Closet = styled.span`
   color: black;
@@ -64,7 +67,8 @@ const Closet = styled.span`
   text-decoration: underline 5px #91d6ed;
     &:hover {
       opacity: .6;
-    }`
+    }
+`;
 
 const Basement = styled.span`
   color: black;
@@ -73,6 +77,7 @@ const Basement = styled.span`
   text-decoration: underline 5px #e882b2;
     &:hover {
       opacity: .6;
-    }`
+    }
+`;
 
 export default Discover
