@@ -59,7 +59,14 @@ const Signup = () => {
 
   return (
     <Container>
-      <SignIn>sign up.</SignIn>
+
+      <OAuth />
+
+      <Or>
+        <OrText>
+          or
+        </OrText>
+      </Or>
 
       <form onSubmit={onSubmit}>
       <DisplayName 
@@ -83,9 +90,12 @@ const Signup = () => {
           id="password"
           placeholder="password"
         />
-        <SignInButton>sign up</SignInButton>
+        <SignInButton>
+          <SignInButtonText>
+            sign up with e-mail
+          </SignInButtonText>
+        </SignInButton>
       </form>
-      <OAuthButton><OAuth /></OAuthButton>
 
       <Links>
       <Link to='/signin'>already registered?</Link>
@@ -103,14 +113,24 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const SignIn = styled.h1`
+const Or = styled.div`
   display: flex;
   margin: auto;
-  font-size: 40px;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
   margin-bottom: 30px;
-  background-color: #FCF894;
-  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background-color: black;
 `;
+
+const OrText = styled.h1`
+  font-size: 20px;
+  color: white;
+  display: flex;
+  margin: auto;`
 
   const DisplayName = styled.input`
   display: flex;
@@ -170,7 +190,7 @@ const SignInButton = styled.button`
   display: flex;
   margin: auto;
   border: none;
-  width: 100px;
+  width: 300px;
   margin-top: 20px;
   padding: 10px 10px 10px 25px;
   border-radius: 20px 20px 20px 20px;
@@ -181,6 +201,10 @@ const SignInButton = styled.button`
       background-color: #9491EC;
     }
 `;
+
+const SignInButtonText = styled.div`
+  display: flex;
+  margin: auto;`
 
 const OAuthButton = styled.button`
   display: flex;

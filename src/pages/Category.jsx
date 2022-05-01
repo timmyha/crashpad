@@ -51,7 +51,12 @@ function Category() {
         ? 'es'
         : 's'}
       </CategoryTitle>
-      {loading ? 'loading'
+      {loading 
+        ? <ul>
+          <LoadingCard />
+          <LoadingCard />
+          <LoadingCard />
+          </ul>
         : listings && listings.length > 0
         ? <>
             <main>
@@ -79,6 +84,17 @@ const Container = styled.div`
   margin-bottom: 200px;
   flex-direction: column;
 `;
+
+const LoadingCard = styled.div`
+  display: flex;
+  margin: auto;
+  height: 200px;
+  width: 360px;
+  background-color: lightgray;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
+
 
 const CategoryTitle = styled.h1`
   display: flex;

@@ -15,10 +15,10 @@ const DiscoverCard = ( { category, icon, text, color, lineColor } ) => {
       <Text>
         {text}
         <LinkText>
-        <span>discover</span> 
+        <span>discover&nbsp;</span> 
         <span 
           style={{"textDecoration":`underline 5px ${lineColor}`}}>
-            &nbsp;{`${category}${ category[category.length - 1]=== 'h' ? 'es' : 's'}`}
+            {`${category}${ category[category.length - 1]=== 'h' ? 'es' : 's'}`}
         </span>
         </LinkText>
       </Text>

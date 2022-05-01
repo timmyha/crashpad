@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
@@ -20,7 +20,7 @@ const Signin = () => {
   const navigate = useNavigate();
 
   const handleFormChange = (e) => {
-    let { value, id }= e.target
+    let { value, id } = e.target
     setFormData(prev => ({
       ...prev,
       [id]: value
@@ -31,11 +31,11 @@ const Signin = () => {
     e.preventDefault();
 
     const auth = getAuth();
-      signInWithEmailAndPassword(auth, email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
 
-        if(user) {
+        if (user) {
           navigate('/');
           toast.success('successfully logged in.');
         }
@@ -43,7 +43,7 @@ const Signin = () => {
       .catch((error) => {
         console.log(error.code, error.message);
         toast.error('password must exceed six characters');
-  });
+      });
   }
 
   const showPass = () => {
@@ -52,38 +52,40 @@ const Signin = () => {
 
   return (
     <Container>
-      
-      <SignIn>sign in.</SignIn>
-
+      <OAuth />
+      <Or>
+        <OrText>
+          or
+        </OrText>
+      </Or>
       <form onSubmit={onSubmit}>
-      <EmailField> 
-        <Email 
-          type="email"
-          value={email} 
-          onChange={handleFormChange} 
-          id="email"
-          placeholder='e-mail address'
-        />
-      
-        <Password 
-          type="password"
-          value={password} 
-          onChange={handleFormChange} 
-          id="password"
-          placeholder='password'
-        />
+        <EmailField>
+          <Email
+            type="email"
+            value={email}
+            onChange={handleFormChange}
+            id="email"
+            placeholder='e-mail address'
+          />
 
-      </EmailField>
+          <Password
+            type="password"
+            value={password}
+            onChange={handleFormChange}
+            id="password"
+            placeholder='password'
+          />
+
+        </EmailField>
 
         <SignInButton>sign in</SignInButton>
       </form>
-      <OAuthButton><OAuth /></OAuthButton>
 
-      
+
       <Links>
-      
-      <Link to="/forgotpassword">forgot password?&nbsp;</Link>
-      <Link to='/signup'>not registered?</Link>
+
+        <Link to="/forgotpassword">forgot password?&nbsp;</Link>
+        <Link to='/signup'>not registered?</Link>
       </Links>
     </Container>
   );
@@ -98,13 +100,24 @@ const Container = styled.div`
   flex-direction: column;
 `;
 
-const SignIn = styled.h1`
+const Or = styled.div`
   display: flex;
   margin: auto;
-  font-size: 40px;
+  font-size: 20px;
+  text-align: center;
+  height: 30px;
+  width: 30px;
+  padding: 5px;
   margin-bottom: 30px;
-  background-color: #FCF894;
-  padding: 10px 20px 10px 20px;
+  border-radius: 5px;
+  background-color: black;
+`;
+
+const OrText = styled.h1`
+  font-size: 20px;
+  color: white;
+  display: flex;
+  margin: auto;
 `;
 
 const EmailField = styled.div`
@@ -149,7 +162,7 @@ const Password = styled.input`
     }
 `;
 
-  const SignInButton = styled.button`
+const SignInButton = styled.button`
   display: flex;
   margin: auto;
   border: none;
@@ -165,7 +178,7 @@ const Password = styled.input`
     }
 `;
 
-  const OAuthButton = styled.button`
+const OAuthButton = styled.button`
     display: flex;
     border: none;
     margin: auto;

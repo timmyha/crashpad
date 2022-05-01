@@ -3,6 +3,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from "../firebase.config";
 import { FcGoogle } from 'react-icons/fc'
+import styled from 'styled-components'
 
 
 const OAuth = () => {
@@ -35,10 +36,32 @@ const OAuth = () => {
 
 
   return (
-    <div onClick={onGoogleClick}>
-      or sign {location.pathname === '/signup' ? 'up' : 'in'} with <FcGoogle />
-    </div>
+    <GoogleButton onClick={onGoogleClick}>
+       <ButtonText><FcGoogle />&nbsp;Sign {location.pathname === '/signup' ? 'up' : 'in'} with Google</ButtonText>
+    </GoogleButton>
   );
 };
+
+const GoogleButton = styled.div`
+  display: flex;
+  width: 300px;
+  height: 50px;
+  margin: auto;
+  border-radius: 30px;
+  background-color: transparent;
+  border: 1px black solid;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  cursor: pointer;
+    &:hover {
+      background-color: black;
+      color: white;
+      transition: .3s;
+    }
+`;
+
+const ButtonText = styled.div`
+  display: flex;
+  margin: auto;`
 
 export default OAuth

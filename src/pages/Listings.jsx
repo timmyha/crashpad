@@ -45,7 +45,12 @@ function Category() {
   return (
     <Container>
       <CategoryTitle>all listings</CategoryTitle>
-     {loading ? 'loading' 
+     {loading 
+      ? <List>
+          <LoadingCard />
+          <LoadingCard />
+          <LoadingCard />
+        </List>
       : listings && listings.length > 0 
       ? <>
         
@@ -78,16 +83,26 @@ const Container = styled.div`
   margin-top: 200px;
   margin-bottom: 200px;
   flex-direction: column;
-`
+`;
 
 const CategoryTitle = styled.h1`
   display: flex;
   margin: auto;
   font-size: 40px;
   margin-bottom: 20px;
-`
+`;
+
+const LoadingCard = styled.div`
+  display: flex;
+  margin: auto;
+  height: 200px;
+  width: 360px;
+  background-color: lightgray;
+  border-radius: 10px;
+  margin-bottom: 20px;
+`;
 
 const List = styled.ul`
-  `
+`;
 
 export default Category
