@@ -14,8 +14,6 @@ import 'swiper/css/pagination'
 
 const Listing = () => {
   const [listing, setListing] = useState(null);
-  const [shareLink, setShareLink] = useState(null);
-
   const navigate = useNavigate();
   const params = useParams();
   const auth = getAuth();

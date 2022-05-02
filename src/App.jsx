@@ -16,6 +16,7 @@ import styled from 'styled-components'
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast'
 import Listing from './pages/Listing'
+import ScrollToTop from './hooks/ScrollToTop'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -43,6 +44,7 @@ function App() {
       />
       <Navbar />
       <Content>
+        <ScrollToTop />
         <Routes>
           <Route path='/' element={<Splash />} />
           <Route path='/profile' element={<PrivateRoute />}>

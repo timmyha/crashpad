@@ -15,7 +15,6 @@ function Category() {
   const params = useParams();
 
   useEffect(() => {
-    window.scrollTo(0, 0)
     const fetchListings = async () => {
       try {
         const listingsRef = collection(db, 'listings')

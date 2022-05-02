@@ -7,10 +7,6 @@ import DiscoverCard from '../components/DiscoverCard';
 
 function Discover() {
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [])
-
   const colors = ["#E882B2", "#85FFE5", "#FCF894", 
                   "#91D6ED", "#9491EC"];
 
