@@ -171,6 +171,7 @@ const EditNameDisplay = styled.input`
   border: none;
   background-color: lightgray;
   margin: auto;
+  margin-top: 20px;
   text-decoration: underline 5px #91D6ED;
     &:focus {
       outline: none;
