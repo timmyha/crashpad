@@ -10,7 +10,7 @@ import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 
 const CreateListing = () => {
-
+  window.scrollTo(0, 0)
   const [formData, setFormData] = useState({
     type: 'couch',
     name: '',

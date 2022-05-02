@@ -1,11 +1,15 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaCouch } from 'react-icons/fa'
+import { FaCouch } from 'react-icons/fa';
+import { useEffect } from 'react'
 import { GiHoleLadder, Gi3DStairs } from 'react-icons/gi'
 import { BiCloset } from 'react-icons/bi'
 import DiscoverCard from '../components/DiscoverCard';
 
 function Discover() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const colors = ["#E882B2", "#85FFE5", "#FCF894", 
                   "#91D6ED", "#9491EC"];
