@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
       <Container>
         { collapseNav
-          ? <CollapseTitle>
+          ? <CollapseTitle onClick={onClick}>
             { scrollUp
               &&  <ScrollUpDiv>
                     <BsFillArrowUpCircleFill onClick={scrollToTop} />
