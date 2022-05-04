@@ -71,7 +71,7 @@ const ScrollUpDiv = styled.div`
   margin-top: 10%;
   font-size: 50px;
   border-radius: 100%;
-  box-shadow: 0 2px 0.5rem gray;
+  box-shadow: 0 2px 0.1rem gray;
   background-color: transparent;
   color: #9491ec;
 `;
