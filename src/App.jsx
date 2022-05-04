@@ -12,6 +12,7 @@ import Category from './pages/Category'
 import Contact from './pages/Contact'
 import CreateListing from './pages/CreateListing'
 import ForgotPassword from './pages/ForgotPassword'
+import UpdateListing from './pages/UpdateListing'
 import styled from 'styled-components'
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from 'react-hot-toast'
@@ -54,6 +55,7 @@ function App() {
           <Route path='/listings' element={<Listings />} />
           <Route path='/category/:categoryName/:listingId' element={<Listing />} />
           <Route path='/create' element={<CreateListing />} />
+          <Route path='/edit/:listingId' element={<UpdateListing />} />
           <Route path='/signin' element={<Signin />} />
           <Route path='/signup' element={<Signup />} />
           <Route path='/category/:categoryName' element={<Category />} />

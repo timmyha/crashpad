@@ -1,14 +1,15 @@
-import { getAuth, updateProfile } from 'firebase/auth'
-import { useState, useEffect } from 'react'
-import styled from 'styled-components'
-import { useNavigate, Link } from 'react-router-dom'
+import { getAuth, updateProfile } from 'firebase/auth';
+import { useState, useEffect } from 'react';
+import styled from 'styled-components';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import {
   updateDoc, doc, collection, getDocs,
   query, where, orderBy, deleteDoc
-} from 'firebase/firestore'
-import { db } from '../firebase.config'
-import Listing from './Listing'
-import toast from 'react-hot-toast'
+} from 'firebase/firestore';
+import { db } from '../firebase.config';
+import Listing from './Listing';
+import toast from 'react-hot-toast';
+import { FaPencilAlt } from 'react-icons/fa';
 
 function Profile() {
 
@@ -84,11 +85,23 @@ function Profile() {
     )))
   }
 
+  const handleEditListing = (id) => {
+    navigate(`/edit/${id}`)
+  }
+
+
+
   const listingDisplay = listings && listings.map(listing => {
     return (
-      <Link key={listing.id} to={`/category/${listing.data.type}/${listing.id}`}>
-        <ListingDisplay>{listing.data.name}</ListingDisplay>
-      </Link>
+      <>
+          <Link key={listing.id} to={`/category/${listing.data.type}/${listing.id}`}>
+        <ListingDisplay>
+          <ListingPhoto src={listing.data.imgUrls[0]}></ListingPhoto>
+          <ListingTitle>{listing.data.name}</ListingTitle>
+        </ListingDisplay>
+        </Link>
+          <EditIcon onClick={() => handleEditListing(listing.id)}><FaPencilAlt /></EditIcon>
+      </>
     )
   })
 
@@ -118,14 +131,14 @@ function Profile() {
         >logout</Logout>
       </Buttons>
       {listings &&
-        <>
+        <ListingCard>
           <NameDisplay>
             your listings:
           </NameDisplay>
           <ListingDiv>
             {listingDisplay}
           </ListingDiv>
-        </>
+        </ListingCard>
 
       }
     </Container>
@@ -217,22 +230,56 @@ display: flex;
 flex-direction: column;
 margin: auto;`
 
-const ListingDisplay = styled.button`
+const ListingDisplay = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 375px;
+  height: 100px;
   text-align: center;
   border: none;
   padding: 10px;
   margin-right: 5px;
   margin-top: 20px;
-  border-radius: 50px;
+  border-radius: 5px;
+  background-color: lightgray;
   cursor: pointer;
     &:hover {
-      opacity: .7;
+      background-color: darkgray;
     }
   @media (max-width: 500px) {
     margin-top: 5px;
     margin-left: 10px;
     width: 300px;
   }`
+
+const ListingPhoto = styled.img`
+  display: flex;
+  width: 100px;
+  height: 100px;`
+
+const EditIcon = styled.div`
+  display: flex;
+  position: absolute;
+  margin-top: 20px;
+  margin-left: -30px;
+  height: 25px;
+  width: 25px;
+  padding: 5px 5px 5px 5px;
+  z-index: 10000;
+  cursor: pointer;
+  border-radius: 100%;
+    &:hover {
+      color: #91D6ED;
+    }`
+
+const ListingTitle = styled.div`
+  display; flex;
+  margin: auto;`
+
+const ListingCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  `
 
 export default Profile
