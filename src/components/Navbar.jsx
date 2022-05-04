@@ -40,18 +40,17 @@ const Navbar = () => {
 
   const onClick = () => {
     navigate('/');
-    console.log("click")
   };
 
   return (
       <Container>
         { collapseNav
-          ? <CollapseTitle onClick={onClick}>
+          ? <CollapseTitle>
             { scrollUp
               &&  <ScrollUpDiv>
                     <BsFillArrowUpCircleFill onClick={scrollToTop} />
                   </ScrollUpDiv>}
-              <CollapseName>crashpad.</CollapseName>
+              <CollapseName onClick={onClick}>crashpad.</CollapseName>
             </CollapseTitle>
           : <TitleDiv onClick={onClick}>
               <SiteName>crashpad.</SiteName> 

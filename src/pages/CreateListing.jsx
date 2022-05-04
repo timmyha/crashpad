@@ -250,7 +250,7 @@ const CreateListing = () => {
           />
 
           <PicsLabel>
-            pics? (required)<br />
+            pics: (required)<br />
           </PicsLabel>
 
           <Input
