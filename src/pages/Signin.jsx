@@ -75,10 +75,11 @@ const Signin = () => {
             id="password"
             placeholder='password'
           />
-
+          <span style={{"textAlign":"center"}}>demo acct: demo@demo.com pass: demodemo</span>
         </EmailField>
-
+    
         <SignInButton>sign in</SignInButton>
+        
       </form>
 
 
