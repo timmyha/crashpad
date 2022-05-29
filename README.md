@@ -10,7 +10,7 @@ to airBnB.
 
 - [ ] right now 'discover' page is merely a placeholder
 - [ ] dream up better styling for all listings page
-- [ ] delete/edit listings
+- [x] delete/edit listings
 - [ ] better geocoding from address (current free API is limited to more vague queries)
 - [ ] in-app messaging between users, currently only mailto: on listing page
 
