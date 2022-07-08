@@ -59,15 +59,12 @@ const Signup = () => {
 
   return (
     <Container>
-
       <OAuth />
-
       <Or>
         <OrText>
           or
         </OrText>
       </Or>
-
       <form onSubmit={onSubmit}>
       <DisplayName 
           type="name"

@@ -77,7 +77,7 @@ const Splash = () => {
                     ? `splash--list_show`
                     : `list--discover`}>
             your empty space, meet fellow vagrants, and tap into our network
-            of wayward travellers.
+            of wayward travelers.
           </TextSpan>
         </SplashText>
       </ListSplash>
