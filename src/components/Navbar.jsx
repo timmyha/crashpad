@@ -27,7 +27,7 @@ const Navbar = () => {
     window.addEventListener('scroll', controlScrollUp);
     return () => {
       window.removeEventListener('scroll', controlNavbar);
-      window.removeEventListener('scroll', controlNavbar);
+      window.removeEventListener('scroll', controlScrollUp);
     };
   }, []);
 
@@ -44,17 +44,14 @@ const Navbar = () => {
 
   return (
       <Container>
-        { collapseNav
-          ? <CollapseTitle>
-            { scrollUp
-              &&  <ScrollUpDiv>
-                    <BsFillArrowUpCircleFill onClick={scrollToTop} />
-                  </ScrollUpDiv>}
-              <CollapseName onClick={onClick}>crashpad.</CollapseName>
-            </CollapseTitle>
-          : <TitleDiv onClick={onClick}>
-              <SiteName>crashpad.</SiteName> 
-            </TitleDiv> }
+        <NavHeader collapse={collapseNav} onClick={onClick}>
+          { scrollUp && collapseNav && (
+            <ScrollUpDiv>
+              <BsFillArrowUpCircleFill onClick={(e) => { e.stopPropagation(); scrollToTop(); }} />
+            </ScrollUpDiv>
+          )}
+          <NavName collapse={collapseNav}>crashpad.</NavName>
+        </NavHeader>
       </Container>
   );
 };
@@ -67,58 +64,44 @@ const Container = styled.div`
 const ScrollUpDiv = styled.div`
   display: flex;
   position: absolute;
-  margin-left: 90%;
-  margin-top: 10%;
+  right: 5%;
   font-size: 50px;
   border-radius: 100%;
   box-shadow: 0 2px 0.1rem gray;
   background-color: transparent;
   color: #9491ec;
+  z-index: 100001;
 `;
 
-const TitleDiv = styled.div`
+const NavHeader = styled.div`
   display: flex;
   position: fixed;
-  margin-top: 0px;
-  height: 100px;
+  top: 0;
+  left: 0;
+  height: ${props => props.collapse ? '50px' : '100px'};
   background-color: #E882B2;
   color: #181314;
   width: 100%;
   cursor: pointer;
   z-index: 100000;
+  transition: all 0.5s ease-in-out;
+  align-items: center;
   &:hover {
-    color: #F1E0AD;
+    color: ${props => props.collapse ? '#FCF894' : '#F1E0AD'};
   }
 `;
 
-const CollapseTitle = styled.div`
-  display: flex;
-  position: fixed;
-  margin-top: 0px;
-  height: 20px;
-  background-color: #E882B2;
-  color: #181314;
-  width: 100%;
-  cursor: pointer;
-  z-index: 10000;
-  &:hover {
-    color: #FCF894;
-  }
-`;
-
-
-const SiteName = styled.h1`
-  font-size: 20vw;
-  margin: auto;
+const NavName = styled.h1`
+  margin: 0;
+  position: relative;
+  margin-top: 30px;
+  left: ${props => props.collapse ? '20%' : '50%'};
+  transform: ${props => props.collapse ? 'translateX(0)' : 'translateX(-50%)'};
+  font-size: ${props => props.collapse ? '25px' : '20vw'};
+  transition: all 0.5s ease-in-out;
    @media (min-width: 650px) {
-     font-size: 8rem;
+     font-size: ${props => props.collapse ? '2rem' : '8rem'};
    }
-`;
-
-const CollapseName = styled.h1`
-  font-size: 25px;
-  margin-left: 20%;
-  }
 `;
 
 export default Navbar
