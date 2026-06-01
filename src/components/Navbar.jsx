@@ -65,6 +65,7 @@ const ScrollUpDiv = styled.div`
   display: flex;
   position: absolute;
   right: 5%;
+  margin-top: 120px;
   font-size: 50px;
   border-radius: 100%;
   box-shadow: 0 2px 0.1rem gray;
